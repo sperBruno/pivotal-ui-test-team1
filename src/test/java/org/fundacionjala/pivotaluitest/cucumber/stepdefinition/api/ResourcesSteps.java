@@ -3,6 +3,7 @@ package org.fundacionjala.pivotaluitest.cucumber.stepdefinition.api;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
@@ -67,9 +68,9 @@ public class ResourcesSteps {
     @When("^I send a POST request with list to (.*)")
     public void iSendAPostRequestWithListTo(final String endPoint,
                                             final List<Map<String, Object>> jsonDataList) {
-        for (Map<String, Object> jsonData : jsonDataList) {
-            responseList.add(RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData));
-        }
+        responseList.addAll(jsonDataList.stream()
+                .map(jsonData -> RequestManager.post(Mapper.mapEndpoint(endPoint), jsonData))
+                .collect(Collectors.toList()));
     }
 
     /**
