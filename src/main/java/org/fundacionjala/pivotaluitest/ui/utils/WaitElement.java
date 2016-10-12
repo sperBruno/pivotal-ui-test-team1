@@ -58,6 +58,6 @@ public final class WaitElement {
      */
     public static void waitClick(final WebElement webElement) {
         waitElement(webElement);
-        webElement.sendKeys();
+        webElement.click();
     }
 }

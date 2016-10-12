@@ -17,7 +17,7 @@ public class Login extends AbstractBasePage {
     @FindBy(id = "credentials_password")
     private WebElement passwordTextField;
 
-    @FindBy(id = "action")
+    @FindBy(name = "action")
     private WebElement nextSigninButton;
 
     /**
