@@ -15,10 +15,10 @@ public class Welcome extends AbstractBasePage {
     /**
      * This method to clicks on the "Signin" button.
      *
-     * @return Return to Login page.
+     * @return Return to SignInForm page.
      */
-    public Login clickSigninLink() {
+    public SignInForm clickSigninLink() {
         WaitElement.waitClick(signinLink);
-        return new Login();
+        return new SignInForm();
     }
 }
