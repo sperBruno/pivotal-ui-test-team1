@@ -5,12 +5,16 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * This class is in charge to set the default  parameters to
  * establishes the connection with pivotal tracker.
  */
 public final class Environment {
+
+    private static final Logger LOGGER = LogManager.getLogger(Environment.class);
 
     private static final String CONFIG = "gradle.properties";
 
@@ -43,11 +47,9 @@ public final class Environment {
             properties = new Properties();
             properties.load(fileReader);
         } catch (FileNotFoundException e) {
-            System.out.println("The properties file couldn't be found");
-            //LOGGER.warn("The properties file couldn't be found", e);
+            LOGGER.warn("The properties file couldn't be found", e);
         } catch (IOException e) {
-            System.out.println("A problem of type");
-            //LOGGER.warn("A problem of type", e);
+            LOGGER.warn("A problem of type", e);
         }
     }
 
@@ -69,7 +71,7 @@ public final class Environment {
      * @param env string name of property setting.
      * @return String that is a property
      */
-    public String getEnv(final String env) {
+    private String getEnv(final String env) {
         String property = System.getProperty(env);
         if (property == null) {
             return properties.getProperty(env);
