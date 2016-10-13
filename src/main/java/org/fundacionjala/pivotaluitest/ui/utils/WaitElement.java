@@ -24,7 +24,7 @@ public final class WaitElement {
      *
      * @param webElement Element to wait.
      */
-    private static void waitElement(final WebElement webElement) {
+    public static void waitUntil(final WebElement webElement) {
         final WebDriver driver = DriverManager.getInstance().getDriver();
         final WebDriverWait wait = new WebDriverWait(driver, Environment.getInstance().getTimeout());
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
@@ -36,7 +36,7 @@ public final class WaitElement {
      * @param webElement Element to wait and clear.
      */
     public static void waitClear(final WebElement webElement) {
-        waitElement(webElement);
+        waitUntil(webElement);
         webElement.clear();
     }
 
@@ -47,7 +47,7 @@ public final class WaitElement {
      * @param text       text to fill.
      */
     public static void waitSendKeys(final WebElement webElement, final String text) {
-        waitElement(webElement);
+        waitUntil(webElement);
         webElement.sendKeys(text);
     }
 
@@ -57,7 +57,18 @@ public final class WaitElement {
      * @param webElement Element to wait and click.
      */
     public static void waitClick(final WebElement webElement) {
-        waitElement(webElement);
+        waitUntil(webElement);
         webElement.click();
+    }
+
+    /**
+     * This method waits and click the element.
+     *
+     * @param webElement Element to wait and click.
+     * @return text to element.
+     */
+    public static String getText(final WebElement webElement) {
+        waitUntil(webElement);
+        return webElement.getText();
     }
 }

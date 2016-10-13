@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.pivotaluitest.ui.utils.WaitElement;
-import org.fundacionjala.pivotaluitest.utils.Environment;
 
 /**
  * this Class is for login on PivotalTracker.
@@ -59,17 +58,6 @@ public class SignInForm extends AbstractBasePage {
 
     /**
      * Method to perform a login as Primary user.
-     *
-     * @return SignInForm to Mach2 application.
-     */
-    public static Home loginAsPrimaryUser() {
-        final String userName = Environment.getInstance().getPrimaryUser();
-        final String password = Environment.getInstance().getPrimaryPassword();
-        return loginAs(userName, password);
-    }
-
-    /**
-     * Method used to perform a login to Mach2 application.
      *
      * @param userName Username used to perform a login to Mach2 application.
      * @param password Password used to perform a login to Mach2 application.

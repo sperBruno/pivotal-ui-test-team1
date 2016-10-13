@@ -1,5 +1,10 @@
 package org.fundacionjala.pivotaluitest.utils;
 
+import java.util.List;
+
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+
 /**
  * Class to help with operations.
  */
@@ -19,5 +24,20 @@ public final class Utils {
      */
     public static String replaceSpaceWithUnderscore(final String key) {
         return key.toLowerCase().replaceAll(" ", "_");
+    }
+
+    /**
+     * Method to find an element into and List of Response.
+     *
+     * @param value        the searched value.
+     * @param responseList the List where the the Value is searched.
+     * @return a JsonPath if the value is found.
+     */
+    public static JsonPath findElementJson(final String value, final List<Response> responseList) {
+        return responseList.stream()
+                .filter(e -> e.jsonPath().get("name").equals(value))
+                .findFirst()
+                .get()
+                .jsonPath();
     }
 }
