@@ -15,9 +15,10 @@ public class ProjectStep {
 
     /**
      * Constructor the ProjectStep Class.
+     *
      * @param otherHome Home page.
      */
-    public ProjectStep(final Home otherHome){
+    public ProjectStep(final Home otherHome) {
         homePage = otherHome;
     }
 
