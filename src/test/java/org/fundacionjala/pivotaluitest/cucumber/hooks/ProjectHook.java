@@ -6,7 +6,6 @@ import java.util.Map;
 import cucumber.api.java.Before;
 
 import org.fundacionjala.pivotaluitest.api.RequestManager;
-import org.fundacionjala.pivotaluitest.ui.pages.project.ProjectForm;
 
 import static org.fundacionjala.pivotaluitest.api.RequestManager.delete;
 
@@ -21,8 +20,8 @@ public class ProjectHook {
     /**
      * Method to delete all projects that meets with the condition.
      */
-    @Before("@deleteProjectsByDefault")
-    public final void deleteProjectsByDefault() {
+    @Before("@deleteAllProjects")
+    public final void deleteAllProjects() {
         List<Map<String, ?>> projects = RequestManager.get(PROJECTS_ENDPOINT).jsonPath().get();
         for (Map<String, ?> object : projects) {
             delete(PROJECTS_ENDPOINT + object.get(ID_KEY).toString());

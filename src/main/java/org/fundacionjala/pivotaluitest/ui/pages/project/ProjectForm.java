@@ -1,19 +1,25 @@
 package org.fundacionjala.pivotaluitest.ui.pages.project;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
 
 import org.fundacionjala.pivotaluitest.ui.pages.AbstractBasePage;
 import org.fundacionjala.pivotaluitest.ui.utils.WaitElement;
+
+import static org.fundacionjala.pivotaluitest.ui.pages.project.ProjectFormSetting.ACCOUNT;
+import static org.fundacionjala.pivotaluitest.ui.pages.project.ProjectFormSetting.PROJECT_NAME;
+import static org.fundacionjala.pivotaluitest.ui.pages.project.ProjectFormSetting.PROJECT_PRIVACY;
 
 /**
  * This class is Project form to PivotalTracker.
  */
 public class ProjectForm extends AbstractBasePage {
-    private static final String ACCOUNT_AUTOMATION_TEST = "AutomationTestAT01";
     @FindBy(className = "tc-project-name__input")
     private WebElement projectNameTextField;
     @FindBy(className = "tc-account-selector")
@@ -26,10 +32,6 @@ public class ProjectForm extends AbstractBasePage {
     private WebElement createAccountButtonOptionDropDownList;
     @FindBy(css = "input.tc-account-creator__name")
     private WebElement newAccountProjectTextField;
-    @FindBys({
-            @FindBy(xpath = "//div[contains(text(), '" + ACCOUNT_AUTOMATION_TEST + "')]")
-    })
-    private List<WebElement> menuBodyList;
 
     /**
      * This method set the projectName in the text field.
@@ -43,14 +45,18 @@ public class ProjectForm extends AbstractBasePage {
 
     /**
      * This method set the Account in the text field or DropDownList.
+     *
+     * @param account That is to search.
      */
-    public void setAccountDropDownList() {
+    public void setAccountDropDownList(final String account) {
         WaitElement.waitClick(accountDropDownList);
+        List<WebElement> menuBodyList = driver.findElements(By.xpath("//div[contains(text(), '" + account + "')]"));
         if (menuBodyList.isEmpty()) {
             WaitElement.waitClick(createAccountButtonOptionDropDownList);
             WaitElement.waitClear(newAccountProjectTextField);
-            WaitElement.waitSendKeys(newAccountProjectTextField, ACCOUNT_AUTOMATION_TEST);
+            WaitElement.waitSendKeys(newAccountProjectTextField, account);
         } else {
+
             final int index = 0;
             WaitElement.waitClick(menuBodyList.get(index));
         }
@@ -64,5 +70,46 @@ public class ProjectForm extends AbstractBasePage {
     public ProjectManagement clickCreateProjectButton() {
         WaitElement.waitClick(createButton);
         return new ProjectManagement();
+    }
+
+    /**
+     * This method selected project privacy.
+     *
+     * @param projectPrivacyType return project privacy type.
+     */
+    public void selectedProjectPrivacy(final ProjectPrivacy projectPrivacyType) {
+        WebElement projectPrivacy =
+                driver.findElement(By.cssSelector("input[data-aid='" + projectPrivacyType.toString() + "']"));
+        WaitElement.waitClick(projectPrivacy);
+    }
+
+    /**
+     * Executes the configurations sent.
+     *
+     * @param configureMap is a map that contains the configurations.
+     */
+    public void setConfiguration(final Map<ProjectFormSetting, String> configureMap) {
+        Map<ProjectFormSetting, ProjectFormStep> strategyOption = strategyConfigureSetting(configureMap);
+        Set<ProjectFormSetting> keys = configureMap.keySet();
+        for (ProjectFormSetting key : keys) {
+            strategyOption.get(key).executeStep();
+        }
+    }
+
+    /**
+     * Create an strategy steps configuration options filling a map with
+     * all the existing configurations.
+     *
+     * @param configureMap is a map that contains all the configurations.
+     * @return the configure map with strategies.
+     */
+    private Map<ProjectFormSetting, ProjectFormStep> strategyConfigureSetting(
+            final Map<ProjectFormSetting, String> configureMap) {
+        Map<ProjectFormSetting, ProjectFormStep> strategyMap = new HashMap<>();
+        strategyMap.put(PROJECT_NAME, () -> setProjectNameTextField(configureMap.get(PROJECT_NAME)));
+        strategyMap.put(ACCOUNT, () -> setAccountDropDownList(configureMap.get(ACCOUNT)));
+        strategyMap.put(PROJECT_PRIVACY,
+                () -> selectedProjectPrivacy(ProjectPrivacy.valueOf(configureMap.get(PROJECT_PRIVACY).toUpperCase())));
+        return strategyMap;
     }
 }

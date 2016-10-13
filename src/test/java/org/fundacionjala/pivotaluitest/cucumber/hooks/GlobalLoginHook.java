@@ -23,6 +23,5 @@ public class GlobalLoginHook {
             SignInForm.loginAs(userName, password);
             beforeAllFlag = true;
         }
-
     }
 }

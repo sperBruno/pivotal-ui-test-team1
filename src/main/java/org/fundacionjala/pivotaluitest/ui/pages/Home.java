@@ -15,6 +15,7 @@ public class Home extends AbstractBasePage {
 
     /**
      * This method a click "Create Project" button.
+     *
      * @return ProjectForm page.
      */
     public ProjectForm clickCreateProjectButton() {
