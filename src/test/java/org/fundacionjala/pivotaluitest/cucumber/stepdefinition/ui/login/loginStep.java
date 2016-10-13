@@ -4,7 +4,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import org.fundacionjala.pivotaluitest.ui.pages.Home;
-import org.fundacionjala.pivotaluitest.ui.pages.Login;
+import org.fundacionjala.pivotaluitest.ui.pages.SignInForm;
 import org.fundacionjala.pivotaluitest.ui.pages.Welcome;
 import org.fundacionjala.pivotaluitest.utils.Environment;
 
@@ -17,11 +17,11 @@ public class loginStep {
         final String userName = Environment.getInstance().getPrimaryUser();
         final String password = Environment.getInstance().getPrimaryPassword();
         Welcome welcomePage = new Welcome();
-        Login login = welcomePage.clickSigninLink();
-        login.setEmailTextField(userName);
-        login.clickNextButton();
-        login.setPasswordTextField(password);
-        Home homePage = login.clickSigninButton();
+        SignInForm signInForm = welcomePage.clickSigninLink();
+        signInForm.setEmailTextField(userName);
+        signInForm.clickNextButton();
+        signInForm.setPasswordTextField(password);
+        Home homePage = signInForm.clickSigninButton();
     }
 
     @Then("^I will have a user logged$")
