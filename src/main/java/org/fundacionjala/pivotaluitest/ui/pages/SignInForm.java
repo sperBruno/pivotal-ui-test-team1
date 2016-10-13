@@ -9,7 +9,7 @@ import org.fundacionjala.pivotaluitest.utils.Environment;
 /**
  * this Class is for login on PivotalTracker.
  */
-public class Login extends AbstractBasePage {
+public class SignInForm extends AbstractBasePage {
 
     @FindBy(id = "credentials_username")
     private WebElement emailTextField;
@@ -60,7 +60,11 @@ public class Login extends AbstractBasePage {
     /**
      * Method to perform a login as Primary user.
      *
+<<<<<<< HEAD:src/main/java/org/fundacionjala/pivotaluitest/ui/pages/Login.java
      * @return Login to PivotalTracker application.
+=======
+     * @return SignInForm to Mach2 application.
+>>>>>>> upstream/develop:src/main/java/org/fundacionjala/pivotaluitest/ui/pages/SignInForm.java
      */
     public static Home loginAsPrimaryUser() {
         final String userName = Environment.getInstance().getPrimaryUser();
@@ -77,10 +81,10 @@ public class Login extends AbstractBasePage {
      */
     public static Home loginAs(final String userName, final String password) {
         Welcome welcomePage = new Welcome();
-        Login login = welcomePage.clickSigninLink();
-        login.setEmailTextField(userName);
-        login.clickNextButton();
-        login.setPasswordTextField(password);
-        return login.clickSigninButton();
+        SignInForm signInForm = welcomePage.clickSigninLink();
+        signInForm.setEmailTextField(userName);
+        signInForm.clickNextButton();
+        signInForm.setPasswordTextField(password);
+        return signInForm.clickSigninButton();
     }
 }
