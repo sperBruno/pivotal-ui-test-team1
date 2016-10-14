@@ -3,6 +3,7 @@ package org.fundacionjala.pivotaluitest.ui.browser;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import org.fundacionjala.pivotaluitest.utils.Environment;
 
@@ -18,6 +19,8 @@ public final class DriverManager {
 
     private WebDriver driver;
 
+    private WebDriverWait wait;
+
     /**
      * This method is in charge to initialize the DriverManager.
      */
@@ -29,6 +32,7 @@ public final class DriverManager {
         driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
         driver.get(baseUrl);
         driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, Environment.getInstance().getTimeout());
     }
 
     /**
@@ -50,5 +54,9 @@ public final class DriverManager {
      */
     public WebDriver getDriver() {
         return driver;
+    }
+
+    public WebDriverWait getWait() {
+        return wait;
     }
 }

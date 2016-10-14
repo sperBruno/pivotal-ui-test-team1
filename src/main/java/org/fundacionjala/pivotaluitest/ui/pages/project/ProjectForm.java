@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.pivotaluitest.ui.pages.AbstractBasePage;
-import org.fundacionjala.pivotaluitest.ui.utils.WaitElement;
+import org.fundacionjala.pivotaluitest.ui.utils.CommonActions;
 
 import static org.fundacionjala.pivotaluitest.ui.pages.project.ProjectFormSetting.ACCOUNT;
 import static org.fundacionjala.pivotaluitest.ui.pages.project.ProjectFormSetting.PROJECT_NAME;
@@ -39,8 +39,8 @@ public class ProjectForm extends AbstractBasePage {
      * @param projectName String whit the projectName.
      */
     public void setProjectNameTextField(final String projectName) {
-        WaitElement.waitClear(projectNameTextField);
-        WaitElement.waitSendKeys(projectNameTextField, projectName);
+        CommonActions.clearTextField(projectNameTextField);
+        CommonActions.sendKeys(projectNameTextField, projectName);
     }
 
     /**
@@ -49,16 +49,16 @@ public class ProjectForm extends AbstractBasePage {
      * @param account That is to search.
      */
     public void setAccountDropDownList(final String account) {
-        WaitElement.waitClick(accountDropDownList);
+        CommonActions.clickElement(accountDropDownList);
         List<WebElement> menuBodyList = driver.findElements(By.xpath("//div[contains(text(), '" + account + "')]"));
         if (menuBodyList.isEmpty()) {
-            WaitElement.waitClick(createAccountButtonOptionDropDownList);
-            WaitElement.waitClear(newAccountProjectTextField);
-            WaitElement.waitSendKeys(newAccountProjectTextField, account);
+            CommonActions.clickElement(createAccountButtonOptionDropDownList);
+            CommonActions.clearTextField(newAccountProjectTextField);
+            CommonActions.sendKeys(newAccountProjectTextField, account);
         } else {
 
             final int index = 0;
-            WaitElement.waitClick(menuBodyList.get(index));
+            CommonActions.clickElement(menuBodyList.get(index));
         }
     }
 
@@ -68,7 +68,7 @@ public class ProjectForm extends AbstractBasePage {
      * @return Project Management page.
      */
     public ProjectManagement clickCreateProjectButton() {
-        WaitElement.waitClick(createButton);
+        CommonActions.clickElement(createButton);
         return new ProjectManagement();
     }
 
@@ -80,7 +80,7 @@ public class ProjectForm extends AbstractBasePage {
     public void selectedProjectPrivacy(final ProjectPrivacy projectPrivacyType) {
         WebElement projectPrivacy =
                 driver.findElement(By.cssSelector("input[data-aid='" + projectPrivacyType.toString() + "']"));
-        WaitElement.waitClick(projectPrivacy);
+        CommonActions.clickElement(projectPrivacy);
     }
 
     /**
