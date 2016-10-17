@@ -1,4 +1,4 @@
-package org.fundacionjala.pivotaluitest.ui.utils;
+package org.fundacionjala.pivotaluitest.ui.pages.common;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -3,7 +3,7 @@ package org.fundacionjala.pivotaluitest.ui.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.fundacionjala.pivotaluitest.ui.utils.CommonActions;
+import org.fundacionjala.pivotaluitest.ui.pages.common.CommonActions;
 
 /**
  * Created by Administrator on 10/12/2016.

@@ -7,10 +7,10 @@ import cucumber.api.java.en.When;
 import org.fundacionjala.pivotaluitest.ui.pages.Dashboard;
 import org.fundacionjala.pivotaluitest.ui.pages.account.Account;
 import org.fundacionjala.pivotaluitest.ui.pages.account.ManageAccount;
+import org.fundacionjala.pivotaluitest.ui.pages.common.CommonNavigator;
 import org.fundacionjala.pivotaluitest.ui.pages.menu.TopMenu;
 import org.fundacionjala.pivotaluitest.ui.pages.project.ProjectForm;
 import org.fundacionjala.pivotaluitest.ui.pages.project.ProjectFormSetting;
-import org.fundacionjala.pivotaluitest.ui.pages.project.ProjectManagement;
 
 /**
  * This class is manage the project step.
@@ -19,6 +19,9 @@ public class ProjectStep {
     private Map<ProjectFormSetting, String> settingMap;
     private TopMenu topMenu;
 
+    /**
+     * Constructor where initialize the values.
+     */
     public ProjectStep() {
         topMenu = new TopMenu();
     }
@@ -34,23 +37,32 @@ public class ProjectStep {
         Dashboard dashboardPage = new Dashboard();
         ProjectForm projectForm = dashboardPage.clickCreateProjectButton();
         projectForm.setConfiguration(newSettingMap);
-        ProjectManagement projectManagement = projectForm.clickCreateProjectButton();
+        projectForm.clickCreateProjectButton();
     }
 
+    /**
+     * This method deleted all account the project.
+     */
     @When("^I delete all account the project$")
     public void deleteAllAccountForProject() {
         topMenu.clickUserNameDropDown();
         Account account = topMenu.clickAccountDropDownItem();
         account.deleteAllAccounts();
-        topMenu.gotToDashboard();
+        CommonNavigator.goToDashboard();
     }
 
+    /**
+     * This method created a new account.
+     *
+     * @param accountName String  whit the account name.
+     */
     @When("^I create a new account (.*)$")
-    public void CreateANewAccount(String accountName) {
+    public void createANewAccount(final String accountName) {
         topMenu.clickUserNameDropDown();
         Account account = topMenu.clickAccountDropDownItem();
         ManageAccount manageAccount = account.createAccount(accountName);
-        manageAccount.gotToDashboard();
+        manageAccount.waitPage();
+        CommonNavigator.goToDashboard();
     }
 
     /**

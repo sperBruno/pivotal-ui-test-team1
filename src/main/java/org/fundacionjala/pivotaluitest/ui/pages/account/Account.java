@@ -6,10 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.pivotaluitest.ui.pages.AbstractBasePage;
-import org.fundacionjala.pivotaluitest.ui.utils.CommonActions;
+import org.fundacionjala.pivotaluitest.ui.pages.common.CommonActions;
 
 /**
- * Created by Administrator on 10/14/2016.
+ * This Account page class.
  */
 public class Account extends AbstractBasePage {
 
@@ -17,7 +17,7 @@ public class Account extends AbstractBasePage {
 
     @FindBy(id = "new_account_link")
     private WebElement createAccountButton;
-    
+
 
     @FindBy(id = "add_account_button")
     private WebElement addAccountButton;
@@ -28,42 +28,67 @@ public class Account extends AbstractBasePage {
     @FindBy(className = "header_button")
     private List<WebElement> manageAccountButtonList;
 
-    public ManageAccount clickManageAccount(WebElement manageAccountButton) {
-        CommonActions.clickElement(manageAccountButton);
-        return new ManageAccount();
-    }
-
-    public List<WebElement> getManageAccountButtonList() {
-        return manageAccountButtonList;
-    }
-
-    public void setAccountNameTextField(String accountName) {
+    /**
+     * This method set the account name in the text field.
+     *
+     * @param accountName String  whit the account name.
+     */
+    public void setAccountNameTextField(final String accountName) {
         CommonActions.clearTextField(accountNameTextField);
         CommonActions.sendKeys(accountNameTextField, accountName);
     }
 
+    /**
+     * This method doing click on "Manage Account" button.
+     *
+     * @param manageAccountButton WebElement that represent a "Management Account".
+     * @return ManageAccount page.
+     */
+    public ManageAccount clickManageAccount(final WebElement manageAccountButton) {
+        CommonActions.clickElement(manageAccountButton);
+        return new ManageAccount();
+    }
+
+    /**
+     * This method doing click on "Create Account" button.
+     */
     public void clickCreateAccountButton() {
         CommonActions.clickElement(createAccountButton);
     }
 
+    /**
+     * This method added a new account.
+     *
+     * @return ManageAccount page.
+     */
     public ManageAccount clickAddAccountButton() {
         CommonActions.clickElement(addAccountButton);
         return new ManageAccount();
     }
 
-    public ManageAccount createAccount(String accountName) {
+    /**
+     * This method created a new account.
+     *
+     * @param accountName String  whit the account name.
+     * @return ManageAccount page.
+     */
+    public ManageAccount createAccount(final String accountName) {
         clickCreateAccountButton();
         setAccountNameTextField(accountName);
         return clickAddAccountButton();
     }
 
-    public void deleteAllAccounts() {//Improve
+    /**
+     * This method deleted all accounts.
+     */
+    public void deleteAllAccounts() {
+        //improve
         List<WebElement> listAccounts = getManageAccountButtonList();
         int index = 0;
         while (!listAccounts.isEmpty()) {
             WebElement webElement = listAccounts.get(index);
             String test = webElement.getText();
-            if (test.equals(MANAGE_ACCOUNT)) {//improve
+            if (test.equals(MANAGE_ACCOUNT)) {
                 String attributeValue = webElement.getAttribute("href");
                 attributeValue = attributeValue.replace("plans", "settings");
                 int indexOf = attributeValue.indexOf("/accounts");
@@ -76,6 +101,15 @@ public class Account extends AbstractBasePage {
             }
             index++;
         }
+    }
+
+    /**
+     * This method obtains a of WebElement list.
+     *
+     * @return List the WebElement the button type.
+     */
+    public List<WebElement> getManageAccountButtonList() {
+        return manageAccountButtonList;
     }
 
 }

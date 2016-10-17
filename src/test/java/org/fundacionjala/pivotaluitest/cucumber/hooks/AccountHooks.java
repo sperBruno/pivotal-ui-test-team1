@@ -3,6 +3,7 @@ package org.fundacionjala.pivotaluitest.cucumber.hooks;
 import cucumber.api.java.Before;
 
 import org.fundacionjala.pivotaluitest.ui.pages.account.Account;
+import org.fundacionjala.pivotaluitest.ui.pages.common.CommonNavigator;
 import org.fundacionjala.pivotaluitest.ui.pages.menu.TopMenu;
 
 /**
@@ -18,6 +19,6 @@ public class AccountHooks {
         topMenu.clickUserNameDropDown();
         Account account = topMenu.clickAccountDropDownItem();
         account.deleteAllAccounts();
-        topMenu.gotToDashboard();
+        CommonNavigator.goToDashboard();
     }
 }

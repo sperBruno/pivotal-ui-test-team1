@@ -7,7 +7,8 @@ Feature: Project Create
     And I added a new project
       | PROJECT_NAME | Automation Project Test 01 |
       | ACCOUNT      | AutomationTestAT01-01      |
-    Then Verify that a new project is created #improve dashboar validation
+    Then Verify that a new project is created
+    And I go to dashboard
 
   @deleteAllProjects @deleteAllAccounts
   Scenario: Create a new project when project account exist
@@ -16,7 +17,8 @@ Feature: Project Create
     And I added a new project
       | PROJECT_NAME | Automation Project Test 01 |
       | ACCOUNT      | AutomationTestAT01-02      |
-    Then Verify that a new project is created #improve.
+    Then Verify that a new project is created
+    And I go to dashboard
 
   @deleteAllProjects @deleteAllAccounts
   Scenario: Create a new project when Project privacy is public and the account exist
@@ -26,3 +28,4 @@ Feature: Project Create
       | ACCOUNT         | AutomationTestAT01-03      |
       | PROJECT_PRIVACY | Public                     |
     Then Verify that a new project is created
+    And I go to dashboard

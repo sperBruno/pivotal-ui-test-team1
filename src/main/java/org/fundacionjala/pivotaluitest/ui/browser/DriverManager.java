@@ -56,6 +56,11 @@ public final class DriverManager {
         return driver;
     }
 
+    /**
+     * This method obtains WebDriverWait.
+     *
+     * @return WebDriverWait.
+     */
     public WebDriverWait getWait() {
         return wait;
     }

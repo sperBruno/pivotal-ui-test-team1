@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.pivotaluitest.ui.pages.AbstractBasePage;
-import org.fundacionjala.pivotaluitest.ui.utils.CommonActions;
+import org.fundacionjala.pivotaluitest.ui.pages.common.CommonActions;
 
 import static org.fundacionjala.pivotaluitest.ui.pages.project.ProjectFormSetting.ACCOUNT;
 import static org.fundacionjala.pivotaluitest.ui.pages.project.ProjectFormSetting.PROJECT_NAME;
