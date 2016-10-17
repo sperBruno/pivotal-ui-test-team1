@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
  * This class is manage the project asserts.
  */
 public class ProjectAssert {
-    private Map<ProjectFormSetting, String> stringMap;
+    private Map<ProjectFormSetting, String> settingMap;
 
     /**
      * Constructor where initialize the values.
@@ -23,7 +23,7 @@ public class ProjectAssert {
      * @param projectStep ResourcesStep.
      */
     public ProjectAssert(final ProjectStep projectStep) {
-        stringMap = projectStep.getSettingMap();
+        settingMap = projectStep.getSettingMap();
     }
 
     /**
@@ -33,8 +33,7 @@ public class ProjectAssert {
     public void verifyThatANewProjectIsCreated() {
         ProjectManagement projectManagement = new ProjectManagement();
         final String expected = projectManagement.getProjectName();
-        final String actual = stringMap.get(PROJECT_NAME);
+        final String actual = settingMap.get(PROJECT_NAME);
         assertEquals(expected, actual);
-        projectManagement.goToHome();
     }
 }

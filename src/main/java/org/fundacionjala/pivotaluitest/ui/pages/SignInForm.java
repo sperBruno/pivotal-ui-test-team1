@@ -3,7 +3,7 @@ package org.fundacionjala.pivotaluitest.ui.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.fundacionjala.pivotaluitest.ui.utils.WaitElement;
+import org.fundacionjala.pivotaluitest.ui.pages.common.CommonActions;
 
 /**
  * this Class is for login on PivotalTracker.
@@ -25,8 +25,8 @@ public class SignInForm extends AbstractBasePage {
      * @param email String whit the email.
      */
     public void setEmailTextField(final String email) {
-        WaitElement.waitClear(emailTextField);
-        WaitElement.waitSendKeys(emailTextField, email);
+        CommonActions.clearTextField(emailTextField);
+        CommonActions.sendKeys(emailTextField, email);
     }
 
     /**
@@ -35,15 +35,15 @@ public class SignInForm extends AbstractBasePage {
      * @param password String  whit the password.
      */
     public void setPasswordTextField(final String password) {
-        WaitElement.waitClear(passwordTextField);
-        WaitElement.waitSendKeys(passwordTextField, password);
+        CommonActions.clearTextField(passwordTextField);
+        CommonActions.sendKeys(passwordTextField, password);
     }
 
     /**
-     * Method to click on next button.
+     * Method to clickElement on next button.
      */
     public void clickNextButton() {
-        WaitElement.waitClick(nextSigninButton);
+        CommonActions.clickElement(nextSigninButton);
     }
 
     /**
@@ -51,9 +51,9 @@ public class SignInForm extends AbstractBasePage {
      *
      * @return Return to home page the PivotalTracker.
      */
-    public Home clickSigninButton() {
-        WaitElement.waitClick(nextSigninButton);
-        return new Home();
+    public Dashboard clickSigninButton() {
+        CommonActions.clickElement(nextSigninButton);
+        return new Dashboard();
     }
 
     /**
@@ -63,7 +63,7 @@ public class SignInForm extends AbstractBasePage {
      * @param password Password used to perform a login to Mach2 application.
      * @return The login to Mach2 application.
      */
-    public static Home loginAs(final String userName, final String password) {
+    public static Dashboard loginAs(final String userName, final String password) {
         Welcome welcomePage = new Welcome();
         SignInForm signInForm = welcomePage.clickSigninLink();
         signInForm.setEmailTextField(userName);

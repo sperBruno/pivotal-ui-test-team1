@@ -4,8 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.pivotaluitest.ui.pages.AbstractBasePage;
-import org.fundacionjala.pivotaluitest.ui.utils.WaitElement;
-import org.fundacionjala.pivotaluitest.utils.Environment;
+import org.fundacionjala.pivotaluitest.ui.pages.common.CommonActions;
 
 /**
  * This Class is Project Management.
@@ -15,20 +14,11 @@ public class ProjectManagement extends AbstractBasePage {
     private WebElement projectNameSpan;
 
     /**
-     * This method go to home.
-     */
-    public void goToHome() {
-        WaitElement.waitUntil(projectNameSpan);
-        final String dashboard = "dashboard";
-        driver.get(String.format("%s/%s", Environment.getInstance().getBaseUrl(), dashboard));
-    }
-
-    /**
      * this project obtain project name.
      *
      * @return project name.
      */
     public String getProjectName() {
-        return WaitElement.getText(projectNameSpan);
+        return CommonActions.getText(projectNameSpan);
     }
 }

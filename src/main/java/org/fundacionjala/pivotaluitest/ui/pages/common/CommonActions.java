@@ -1,4 +1,4 @@
-package org.fundacionjala.pivotaluitest.ui.utils;
+package org.fundacionjala.pivotaluitest.ui.pages.common;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,12 +11,12 @@ import org.fundacionjala.pivotaluitest.utils.Environment;
 /**
  * This is class wait to load the element.
  */
-public final class WaitElement {
+public final class CommonActions {
 
     /**
      * Constructor private.
      */
-    private WaitElement() {
+    private CommonActions() {
     }
 
     /**
@@ -24,6 +24,7 @@ public final class WaitElement {
      *
      * @param webElement Element to wait.
      */
+    @Deprecated
     public static void waitUntil(final WebElement webElement) {
         final WebDriver driver = DriverManager.getInstance().getDriver();
         final WebDriverWait wait = new WebDriverWait(driver, Environment.getInstance().getTimeout());
@@ -35,8 +36,8 @@ public final class WaitElement {
      *
      * @param webElement Element to wait and clear.
      */
-    public static void waitClear(final WebElement webElement) {
-        waitUntil(webElement);
+    public static void clearTextField(final WebElement webElement) {
+        DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
         webElement.clear();
     }
 
@@ -46,29 +47,30 @@ public final class WaitElement {
      * @param webElement Element to wait and fill.
      * @param text       text to fill.
      */
-    public static void waitSendKeys(final WebElement webElement, final String text) {
-        waitUntil(webElement);
+    public static void sendKeys(final WebElement webElement, final String text) {
+        DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
+        webElement.clear();
         webElement.sendKeys(text);
     }
 
     /**
-     * This method waits and click the element.
+     * This method waits and clickElement the element.
      *
-     * @param webElement Element to wait and click.
+     * @param webElement Element to wait and clickElement.
      */
-    public static void waitClick(final WebElement webElement) {
-        waitUntil(webElement);
+    public static void clickElement(final WebElement webElement) {
+        DriverManager.getInstance().getWait().until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
 
     /**
-     * This method waits and click the element.
+     * This method waits and clickElement the element.
      *
-     * @param webElement Element to wait and click.
+     * @param webElement Element to wait and clickElement.
      * @return text to element.
      */
     public static String getText(final WebElement webElement) {
-        waitUntil(webElement);
+        DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
         return webElement.getText();
     }
 }
