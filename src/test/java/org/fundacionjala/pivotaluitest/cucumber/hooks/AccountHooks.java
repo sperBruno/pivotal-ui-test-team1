@@ -18,7 +18,7 @@ public class AccountHooks {
         TopMenu topMenu = new TopMenu();
         topMenu.clickUserNameDropDown();
         Account account = topMenu.clickAccountDropDownItem();
-        account.deleteAllAccounts();
+        account.deleteAllAccounts(account.getManageAccountButtonList());
         CommonNavigator.goToDashboard();
     }
 }

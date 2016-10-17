@@ -80,27 +80,36 @@ public class Account extends AbstractBasePage {
 
     /**
      * This method deleted all accounts.
+     *
+     * @param accountList List the elements to deleted.
+     * @return Return true if deleted all projects.
      */
-    public void deleteAllAccounts() {
-        //improve
-        List<WebElement> listAccounts = getManageAccountButtonList();
-        int index = 0;
-        while (!listAccounts.isEmpty()) {
-            WebElement webElement = listAccounts.get(index);
-            String test = webElement.getText();
-            if (test.equals(MANAGE_ACCOUNT)) {
-                String attributeValue = webElement.getAttribute("href");
-                attributeValue = attributeValue.replace("plans", "settings");
-                int indexOf = attributeValue.indexOf("/accounts");
-                attributeValue = attributeValue.substring(indexOf);
-                ManageAccount manageAccount = clickManageAccount(webElement);
-                SettingAccount settingAccount = manageAccount.clickSetting(attributeValue);
-                settingAccount.clickDeleteAccountLink();
-                listAccounts = getManageAccountButtonList();
-                index = 0;
+    public boolean deleteAllAccounts(final List<WebElement> accountList) {
+        if (!accountList.isEmpty()) {
+            int index = 1;
+            WebElement webElement = accountList.get(index);
+            String text = webElement.getText();
+            if (text.equals(MANAGE_ACCOUNT)) {
+                deleteAccount(webElement);
             }
-            index++;
+            return deleteAllAccounts(getManageAccountButtonList());
         }
+        return true;
+    }
+
+    /**
+     * This method deleted account.
+     *
+     * @param webElement WebElement for delete account.
+     */
+    private void deleteAccount(final WebElement webElement) {
+        String attributeValue = webElement.getAttribute("href");
+        attributeValue = attributeValue.replace("plans", "settings");
+        int indexOf = attributeValue.indexOf("/accounts");
+        attributeValue = attributeValue.substring(indexOf);
+        ManageAccount manageAccount = clickManageAccount(webElement);
+        SettingAccount settingAccount = manageAccount.clickSetting(attributeValue);
+        settingAccount.clickDeleteAccountLink();
     }
 
     /**
