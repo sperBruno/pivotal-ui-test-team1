@@ -12,6 +12,6 @@ Feature: Task item test
 
   @toDashBoard @deleteAllProjects
   Scenario: create a task
-    Given I go to the project [Project.name] and story [Story.name] created
+    Given I select the project [Project.name] and story [Story.name] created
     When I create a task whit the text: this is a task test
     Then The task: this is a task test is created

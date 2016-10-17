@@ -19,7 +19,7 @@ public class TasksStep {
      * @param projectName String of the name of the project.
      * @param storyName   String of the name of the story.
      */
-    @Given("^I go to the project (.*) and story (.*) created$")
+    @Given("^I select the project (.*) and story (.*) created$")
     public void iGoToTheProjectProjectNameAndStoryStoryNameCreated(final String projectName, final String storyName) {
         String project = Mapper.mapEndpoint(projectName);
         String story = Mapper.mapEndpoint(storyName);
