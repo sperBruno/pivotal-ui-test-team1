@@ -1,5 +1,8 @@
 package org.fundacionjala.pivotaluitest.ui.pages.project;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -20,5 +23,21 @@ public class ProjectManagement extends AbstractBasePage {
      */
     public String getProjectName() {
         return CommonActions.getText(projectNameSpan);
+    }
+
+    /**
+     * this project obtain project id.
+     *
+     * @return Project id of created new project.
+     */
+    public String getProjectId() {
+        String projectId = "";
+        String regularExpression = "(\\d+)$";
+        String url = driver.getCurrentUrl();
+        Matcher matcher = Pattern.compile(regularExpression).matcher(url);
+        if (matcher.find()) {
+            projectId = matcher.group();
+        }
+        return projectId;
     }
 }

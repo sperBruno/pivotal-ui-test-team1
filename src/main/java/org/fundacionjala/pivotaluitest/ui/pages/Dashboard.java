@@ -1,5 +1,8 @@
 package org.fundacionjala.pivotaluitest.ui.pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -21,5 +24,16 @@ public class Dashboard extends AbstractBasePage {
     public ProjectForm clickCreateProjectButton() {
         CommonActions.clickElement(createProjectButton);
         return new ProjectForm();
+    }
+
+    /**
+     * This method verify if project exist in the dashboard.
+     *
+     * @param projectId ProjectId to search.
+     * @return Return true if exist the project.
+     */
+    public Boolean existProject(final String projectId) {
+        List<WebElement> projectList = driver.findElements(By.id(String.format("project_%s", projectId)));
+        return !projectList.isEmpty();
     }
 }
