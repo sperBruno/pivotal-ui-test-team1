@@ -47,7 +47,7 @@ public class ProjectStep {
     public void deleteAllAccountForProject() {
         topMenu.clickUserNameDropDown();
         Account account = topMenu.clickAccountDropDownItem();
-        account.deleteAllAccounts();
+        account.deleteAllAccounts(account.getManageAccountButtonList());
         CommonNavigator.goToDashboard();
     }
 
