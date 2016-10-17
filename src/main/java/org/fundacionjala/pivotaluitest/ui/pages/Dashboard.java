@@ -16,6 +16,9 @@ public class Dashboard extends AbstractBasePage {
     @FindBy(id = "create_new_project_button")
     private WebElement createProjectButton;
 
+    @FindBy(id = "my_projects_list")
+    private WebElement projectsList;
+
     /**
      * This method a clickElement "Create Project" button.
      *
@@ -35,5 +38,22 @@ public class Dashboard extends AbstractBasePage {
     public Boolean existProject(final String projectId) {
         List<WebElement> projectList = driver.findElements(By.id(String.format("project_%s", projectId)));
         return !projectList.isEmpty();
+    }
+
+    /**
+     * This method serch a project.
+     *
+     * @param projectName String Project name.
+     * @return StoryDashboard object.
+     */
+    public StoryDashBoard projectsList(final String projectName) {
+        List<WebElement> projects = projectsList.findElements(By.className("project_title"));
+        for (WebElement project : projects) {
+            if (projectName.equals(project.getText())) {
+                CommonActions.clickElement(project);
+            }
+        }
+        return new StoryDashBoard();
+
     }
 }
