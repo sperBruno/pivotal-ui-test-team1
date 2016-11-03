@@ -16,13 +16,13 @@ Feature: Update item test
 
    @toDashBoard @deleteAllProjects
   Scenario: Update a task
-    Given I go to the project [Project1.name] and story [Story1.name] created
+    Given I select the project [Project1.name] and story [Story1.name] created
     When I update the task [Tasks1.description] for: The text is updated now
     Then The task: The text is updated now is created
 
   @deleteAllProjects @toDashBoard
   Scenario: Delete task
-    Given I go to the project [Project1.name] and story [Story1.name] created
+    Given I select the project [Project1.name] and story [Story1.name] created
     When I delete the task: [Tasks1.description] pressing the delete button
     Then The task: [Tasks1.description] is deleted
 
