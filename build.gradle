@@ -64,6 +64,15 @@ task executeFeatures() {
                 jvmArgs = ["-Dproxy=" + proxy]
                 jvmArgs = ["-DprimaryAuthenticationUser=" + primaryAuthenticationUser]
                 jvmArgs = ["-DprimaryAuthenticationPassword=" + primaryAuthenticationPassword]
+                jvmArgs = ["-DbrowserStackUser=" + browserStackUser]
+                jvmArgs = ["-DbrowserStackKey=" + browserStackKey]
+                jvmArgs = ["-DbrowserstackDebug=" + browserstackDebug]
+                jvmArgs = ["-Dbrowser=" + browser]
+                jvmArgs = ["-Dbrowser_version=" + browser_version]
+                jvmArgs = ["-Dos_version=" + os_version]
+                jvmArgs = ["-Dresolution=" + resolution]
+                jvmArgs = ["-Dbuilded=" + builded]
+                jvmArgs = ["-Dos=" + os]
             }
         } catch (Exception e) {
             //In order to avoid FAILURE: Build failed with an exception.

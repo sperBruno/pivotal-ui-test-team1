@@ -43,13 +43,13 @@ public final class Environment {
 
     private static final String RESOLUTION = "resolution";
 
-    private static final String BROWSER_STACK_DEBUG = "browserstack.debug";
+    private static final String BROWSER_STACK_DEBUG = "browserstackDebug";
 
-    private static final String BUILD = "build";
+    private static final String BUILD = "builded";
 
     private static final String TIMEOUT = "timeout";
-    public static final String BROWSER_STACK_USER = "browserStack.user";
-    public static final String BROWSER_STACK_KEY = "browserStack.key";
+    public static final String BROWSER_STACK_USER = "browserStackUser";
+    public static final String BROWSER_STACK_KEY = "browserStackKey";
 
     private static Environment environment;
 
