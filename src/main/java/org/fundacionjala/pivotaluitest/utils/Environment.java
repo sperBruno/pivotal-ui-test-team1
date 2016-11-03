@@ -47,6 +47,10 @@ public final class Environment {
 
     private static final String BUILD = "builded";
 
+    private static final String PORT = "port";
+
+    private static final String HOST = "host";
+
     private static final String TIMEOUT = "timeout";
     public static final String BROWSER_STACK_USER = "browserStackUser";
     public static final String BROWSER_STACK_KEY = "browserStackKey";
@@ -247,5 +251,23 @@ public final class Environment {
      */
     public String getResolution() {
         return getEnv(RESOLUTION);
+    }
+
+    /**
+     * Get the proxy port.
+     *
+     * @return String proxy port.
+     */
+    public Object getPort() {
+        return getEnv(PORT);
+    }
+
+    /**
+     * Get the proxy host.
+     *
+     * @return String proxy host.
+     */
+    public Object getHost() {
+        return getEnv(HOST);
     }
 }

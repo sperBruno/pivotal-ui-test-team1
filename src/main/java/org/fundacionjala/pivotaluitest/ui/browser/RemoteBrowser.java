@@ -1,15 +1,14 @@
 package org.fundacionjala.pivotaluitest.ui.browser;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.fundacionjala.pivotaluitest.utils.Environment;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * This class initialize the Remote Selenium Web Driver.
@@ -48,7 +47,8 @@ class RemoteBrowser implements Driver {
                         + "@hub-cloud.browserstack.com/wd/hub";
         DesiredCapabilities caps = new DesiredCapabilities();
         if (!ENVIRONMENT.getProxy().isEmpty()) {
-            System.getProperties().put(HTTPS_PROXY_HOST, ENVIRONMENT.getProxy());
+            System.getProperties().put(HTTPS_PROXY_HOST, ENVIRONMENT.getHost());
+            System.getProperties().put(HTTPS_PROXY_PORT, ENVIRONMENT.getPort());
         }
         caps.setCapability(BROWSER, ENVIRONMENT.getBrowserCapability());
         caps.setCapability(BROWSER_STACK_DEBUG, ENVIRONMENT.getStackDebug());

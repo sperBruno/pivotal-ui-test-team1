@@ -73,6 +73,8 @@ task executeFeatures() {
                 jvmArgs = ["-Dresolution=" + resolution]
                 jvmArgs = ["-Dbuilded=" + builded]
                 jvmArgs = ["-Dos=" + os]
+                jvmArgs = ["-Dhost=" + host]
+                jvmArgs = ["-Dport=" + port]
             }
         } catch (Exception e) {
             //In order to avoid FAILURE: Build failed with an exception.
