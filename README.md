@@ -18,6 +18,7 @@ The following features are the main that are implemented in this framework.
    - Task
    - Workspace
 
+
 REQUIREMENTS AND SET CONFIGURATIONS
 -----------------------------------
 
