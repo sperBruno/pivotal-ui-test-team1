@@ -41,7 +41,7 @@ public final class Mapper {
      * @param parameter the value to be get from the response.
      * @return the full end point.
      */
-    public static String getField(final Response response, final String parameter) {
+    private static String getField(final Response response, final String parameter) {
         return from(response.asString()).get(parameter).toString();
     }
 

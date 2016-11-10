@@ -38,7 +38,7 @@ public class ProjectForm extends AbstractBasePage {
      *
      * @param projectName String whit the projectName.
      */
-    public void setProjectNameTextField(final String projectName) {
+    private void setProjectNameTextField(final String projectName) {
         CommonActions.clearTextField(projectNameTextField);
         CommonActions.sendKeys(projectNameTextField, projectName);
     }
@@ -48,7 +48,7 @@ public class ProjectForm extends AbstractBasePage {
      *
      * @param account That is to search.
      */
-    public void setAccountDropDownList(final String account) {
+    private void setAccountDropDownList(final String account) {
         CommonActions.clickElement(accountDropDownList);
         List<WebElement> menuBodyList = driver.findElements(By.xpath("//div[contains(text(), '" + account + "')]"));
         if (menuBodyList.isEmpty()) {
@@ -63,7 +63,7 @@ public class ProjectForm extends AbstractBasePage {
     }
 
     /**
-     * This method a new project the application.
+     * This method click on the new project button.
      *
      * @return Project Management page.
      */
@@ -77,7 +77,7 @@ public class ProjectForm extends AbstractBasePage {
      *
      * @param projectPrivacyType return project privacy type.
      */
-    public void selectedProjectPrivacy(final ProjectPrivacy projectPrivacyType) {
+    private void selectedProjectPrivacy(final ProjectPrivacy projectPrivacyType) {
         WebElement projectPrivacy =
                 driver.findElement(By.cssSelector("input[data-aid='" + projectPrivacyType.toString() + "']"));
         CommonActions.clickElement(projectPrivacy);

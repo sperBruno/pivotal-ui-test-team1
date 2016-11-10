@@ -18,14 +18,14 @@ public class SettingAccount extends AbstractBasePage {
     /**
      * This method doing click on "Ok alert Message" button.
      */
-    public void clickOKAlertMessage() {
+    private void clickOKAlertMessage() {
         driver.switchTo().alert().accept();
     }
 
     /**
      * This method doing click on "Delete Account" link.
      */
-    public void clickDeleteAccountLink() {
+    void clickDeleteAccountLink() {
         CommonActions.clickElement(deleteAccountLink);
         clickOKAlertMessage();
     }

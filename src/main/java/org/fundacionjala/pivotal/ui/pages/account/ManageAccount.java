@@ -21,7 +21,7 @@ public class ManageAccount extends AbstractBasePage {
      * @param name String  whit the setting name.
      * @return SettingAccount page.
      */
-    public SettingAccount clickSetting(final String name) {
+    SettingAccount clickSetting(final String name) {
         WebElement settingButton = driver.findElement(By.cssSelector("a[href='" + name + "']"));
         CommonActions.clickElement(settingButton);
         return new SettingAccount();

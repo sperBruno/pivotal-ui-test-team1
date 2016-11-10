@@ -9,7 +9,7 @@ public class AlertMessage {
     /**
      * this method click on the ok button of the alert.
      */
-    public void clickOKAlertMessage() {
+    void clickOKAlertMessage() {
         DriverManager.getInstance().getDriver().switchTo().alert().accept();
     }
 }
