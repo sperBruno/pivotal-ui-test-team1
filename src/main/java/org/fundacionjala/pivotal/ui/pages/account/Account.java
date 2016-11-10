@@ -9,7 +9,7 @@ import org.fundacionjala.pivotal.ui.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.ui.pages.common.CommonActions;
 
 /**
- * This Account page class.
+ * This is the Account page class.
  */
 public class Account extends AbstractBasePage {
 
@@ -33,18 +33,18 @@ public class Account extends AbstractBasePage {
      *
      * @param accountName String  whit the account name.
      */
-    public void setAccountNameTextField(final String accountName) {
+    private void setAccountNameTextField(final String accountName) {
         CommonActions.clearTextField(accountNameTextField);
         CommonActions.sendKeys(accountNameTextField, accountName);
     }
 
     /**
-     * This method doing click on "Manage Account" button.
+     * This method do click on "Manage Account" button.
      *
      * @param manageAccountButton WebElement that represent a "Management Account".
      * @return ManageAccount page.
      */
-    public ManageAccount clickManageAccount(final WebElement manageAccountButton) {
+    private ManageAccount clickManageAccount(final WebElement manageAccountButton) {
         CommonActions.clickElement(manageAccountButton);
         return new ManageAccount();
     }
@@ -52,7 +52,7 @@ public class Account extends AbstractBasePage {
     /**
      * This method doing click on "Create Account" button.
      */
-    public void clickCreateAccountButton() {
+    private void clickCreateAccountButton() {
         CommonActions.clickElement(createAccountButton);
     }
 
@@ -61,7 +61,7 @@ public class Account extends AbstractBasePage {
      *
      * @return ManageAccount page.
      */
-    public ManageAccount clickAddAccountButton() {
+    private ManageAccount clickAddAccountButton() {
         CommonActions.clickElement(addAccountButton);
         return new ManageAccount();
     }

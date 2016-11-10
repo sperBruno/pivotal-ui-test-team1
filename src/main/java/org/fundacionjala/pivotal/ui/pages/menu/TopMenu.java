@@ -11,6 +11,7 @@ import org.fundacionjala.pivotal.ui.pages.common.CommonActions;
  * This class doing the manage the menu the PivotalTracker application.
  */
 public class TopMenu extends AbstractBasePage {
+
     @FindBy(css = "div.undefined.tc_profile_dropdown > div.tc_dropdown > a.tc_dropdown_name")
     private WebElement userNameDropDown;
 
@@ -18,16 +19,16 @@ public class TopMenu extends AbstractBasePage {
     private WebElement accountDropDownItem;
 
     /**
-     * This method doing click on "User Name" DropDown.
+     * This method do click on "User Name" DropDown.
      */
     public void clickUserNameDropDown() {
         CommonActions.clickElement(userNameDropDown);
     }
 
     /**
-     * This method doing click on "Account" DropDownItem.
+     * This method do click on "Account" DropDownItem.
      *
-     * @return Account page.
+     * @return a new Account page.
      */
     public Account clickAccountDropDownItem() {
         CommonActions.clickElement(accountDropDownItem);
