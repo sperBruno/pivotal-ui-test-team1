@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * This class initialize the Remote Selenium Web Driver.
+ * This class initialize the Remote Selenium Web Driver (Browserstack).
  */
 class BrowserStack implements Driver {
 
