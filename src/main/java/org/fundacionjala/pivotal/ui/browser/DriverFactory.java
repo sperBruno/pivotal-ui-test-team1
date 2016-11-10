@@ -27,10 +27,10 @@ public final class DriverFactory {
                 return new Chrome();
             case FIREFOX:
                 return new Firefox();
-            case REMOTE:
-                return new RemoteBrowser();
-            case IE:
-                return new IE();
+            case BROWSERSTACK:
+                return new BrowserStack();
+            case SAUCELABS:
+                return new SauceLabs();
             default:
                 throw new WebDriverException(BROWSER_NOT_FOUND_MSG);
         }

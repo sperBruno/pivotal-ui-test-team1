@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * This class initialize the Remote Selenium Web Driver (Saucelabs).
+ * This class initialize the Remote Selenium Web Driver.
  */
 final class SauceLabs implements Driver {
 

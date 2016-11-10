@@ -5,7 +5,7 @@ package org.fundacionjala.pivotal.ui.browser;
  */
 public enum Browser {
     CHROME,
-    REMOTE,
     FIREFOX,
-    IE
+    BROWSERSTACK,
+    SAUCELABS
 }
