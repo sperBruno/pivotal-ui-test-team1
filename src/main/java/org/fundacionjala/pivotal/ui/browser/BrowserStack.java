@@ -67,6 +67,7 @@ class BrowserStack implements Driver {
             remoteWebDriver = new RemoteWebDriver(new URL(url), caps);
         } catch (MalformedURLException e) {
             LOGGER.warn(e.getMessage(), e);
+            throw new RuntimeException();
         }
         return remoteWebDriver;
     }
