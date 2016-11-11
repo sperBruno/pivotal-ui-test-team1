@@ -3,7 +3,6 @@ package org.fundacionjala.pivotal.cucumber.stepdefinition.ui.task;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import org.fundacionjala.pivotal.api.Mapper;
-import org.fundacionjala.pivotal.ui.browser.DriverManager;
 import org.fundacionjala.pivotal.ui.pages.Dashboard;
 import org.fundacionjala.pivotal.ui.pages.StoryDashBoard;
 

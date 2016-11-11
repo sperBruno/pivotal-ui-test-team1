@@ -2,7 +2,6 @@ package org.fundacionjala.pivotal.cucumber.hooks;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import io.restassured.response.Response;
 import org.fundacionjala.pivotal.api.RequestManager;
 import org.fundacionjala.pivotal.cucumber.stepdefinition.ui.workspace.WorkspaceStepDef;
 import org.fundacionjala.pivotal.ui.pages.workspace.Workspace;
