@@ -81,6 +81,6 @@ Current contributors:
    - Juana Rodriguez (JuanaRodriguez) - https://github.com/JuanaRodriguez
    - Aldo Balderrama (mabalderramav) - https://github.com/mabalderramav
    - Bruno Vasquez (brunovasquez) - https://github.com/brunovasquez
-   - Jimmy Romero S. (JimmyRomero) - https://github.com/JimmyRomero
+   - Jimmy Romero (JimmyRomero) - https://github.com/JimmyRomero
    - Alvaro Daza (AlvaroDazaQuiroga) - https://github.com/AlvaroDazaQuiroga
    - Carlos Gonzales (carledriss) - https://github.com/carledriss
