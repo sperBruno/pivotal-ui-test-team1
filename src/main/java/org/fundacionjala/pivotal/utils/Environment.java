@@ -1,13 +1,12 @@
 package org.fundacionjala.pivotal.utils;
 
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -56,8 +55,7 @@ public final class Environment {
      * This method read the config property file.
      */
     private Environment() {
-        File file = new File(CONFIG);
-        try (FileReader fileReader = new FileReader(file)) {
+        try (FileInputStream fileReader = new FileInputStream(CONFIG)) {
             properties = new Properties();
             properties.load(fileReader);
         } catch (FileNotFoundException e) {

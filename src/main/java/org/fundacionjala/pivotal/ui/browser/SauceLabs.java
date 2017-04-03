@@ -1,14 +1,14 @@
 package org.fundacionjala.pivotal.ui.browser;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.fundacionjala.pivotal.utils.Environment;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * This class initialize the Remote Selenium Web Driver.
@@ -50,7 +50,7 @@ final class SauceLabs implements Driver {
         caps.setCapability(PLATFORM, String.format("%s %s", ENVIRONMENT.getRemotePlatform(),
                 ENVIRONMENT.getRemotePlatformVersion()));
         caps.setCapability(RESOLUTION, ENVIRONMENT.getRemoteResolution());
-        RemoteWebDriver remoteWebDriver = null;
+        RemoteWebDriver remoteWebDriver;
         try {
             remoteWebDriver = new RemoteWebDriver(new URL(url), caps);
         } catch (MalformedURLException e) {
