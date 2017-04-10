@@ -2,6 +2,7 @@ package org.fundacionjala.pivotal.ui.pages;
 
 import java.util.List;
 
+import org.fundacionjala.pivotal.ui.browser.DriverManager;
 import org.fundacionjala.pivotal.ui.pages.common.CommonActions;
 import org.fundacionjala.pivotal.ui.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.ui.pages.workspace.CreateWorkspace;
@@ -16,9 +17,6 @@ import org.openqa.selenium.support.FindBy;
 public class Dashboard extends AbstractBasePage {
     @FindBy(id = "create_new_project_button")
     private WebElement createProjectButton;
-
-    @FindBy(id = "my_projects_list")
-    private WebElement projectsList;
 
     @FindBy(id = "create_new_workspace_button")
     private WebElement createWorkspaceLink;
@@ -54,9 +52,10 @@ public class Dashboard extends AbstractBasePage {
      * @return StoryDashboard object.
      */
     public StoryDashBoard projectsList(final String projectName) {
-        List<WebElement> projects = projectsList.findElements(By.className("project_title"));
+        List<WebElement> projects = DriverManager.getInstance().getDriver().findElements(By.cssSelector("a[data-aid='project-name']"));
         for (WebElement project : projects) {
             if (projectName.equals(project.getText())) {
+                System.out.println(project);
                 CommonActions.clickElement(project);
             }
         }

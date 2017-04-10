@@ -19,6 +19,8 @@ public class StoryDashBoard extends AbstractBasePage {
     private static final String SAVE_BUTTON = "button[class=\"autosaves std save\"]";
     private static final String DELETE_BUTTON = "a[class=\"autosaves undraggable delete\"]";
     public static final String ALL_DELETE_BUTTONS = "//li[contains(@class,'task draggable droppable task')]";
+
+    private SideBarBoard sideBarBoard;
     @FindBy(name = "task[description]")
     private WebElement taskTextField;
 
@@ -35,6 +37,9 @@ public class StoryDashBoard extends AbstractBasePage {
     private WebElement taskIndex;
 
 
+    public StoryDashBoard() {
+        sideBarBoard = new SideBarBoard();
+    }
     /**
      * Deploys the story board.
      *
@@ -120,4 +125,11 @@ public class StoryDashBoard extends AbstractBasePage {
                 .findElement(By.cssSelector(DELETE_BUTTON)));
     }
 
+    /**
+     * This method will be used to get sideBarBoard.
+     * @return SideBarBoard
+     */
+    public SideBarBoard getSideBarBoard() {
+        return sideBarBoard;
+    }
 }

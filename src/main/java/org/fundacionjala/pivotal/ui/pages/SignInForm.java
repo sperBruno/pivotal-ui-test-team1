@@ -1,5 +1,6 @@
 package org.fundacionjala.pivotal.ui.pages;
 
+import org.fundacionjala.pivotal.utils.Environment;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -70,5 +71,13 @@ public class SignInForm extends AbstractBasePage {
         signInForm.clickNextButton();
         signInForm.setPasswordTextField(password);
         return signInForm.clickSigninButton();
+    }
+
+    /**
+     * This method will be used to login to Pivotal using env properties
+     * @return Dashboard.
+     */
+    public static Dashboard loginAsPrimaryUser() {
+        return SignInForm.loginAs(Environment.getInstance().getPrimaryUser(), Environment.getInstance().getPrimaryPassword());
     }
 }
