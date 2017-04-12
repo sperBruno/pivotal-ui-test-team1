@@ -1,8 +1,5 @@
 package org.fundacionjala.pivotal.ui.pages;
 
-import java.util.List;
-
-import org.fundacionjala.pivotal.ui.browser.DriverManager;
 import org.fundacionjala.pivotal.ui.pages.common.CommonActions;
 import org.fundacionjala.pivotal.ui.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.ui.pages.workspace.CreateWorkspace;
@@ -11,11 +8,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 /**
  * Dashboard page the PivotalTracker.
  */
 public class Dashboard extends AbstractBasePage {
-    @FindBy(id = "create_new_project_button")
+    @FindBy(css = ".button.button--action")
     private WebElement createProjectButton;
 
     @FindBy(id = "create_new_workspace_button")
@@ -51,16 +50,19 @@ public class Dashboard extends AbstractBasePage {
      * @param projectName String Project name.
      * @return StoryDashboard object.
      */
-    public StoryDashBoard projectsList(final String projectName) {
-        List<WebElement> projects = DriverManager.getInstance().getDriver().findElements(By.cssSelector("a[data-aid='project-name']"));
-        for (WebElement project : projects) {
-            if (projectName.equals(project.getText())) {
-                System.out.println(project);
-                CommonActions.clickElement(project);
-            }
-        }
-        return new StoryDashBoard();
-    }
+////    public StoryDashBoard projectsList(final String projectName) {
+//    public ProjectHome projectsList(final String projectName) {
+//        List<WebElement> projects = DriverManager.getInstance().getDriver().findElements(By.cssSelector("a[data-aid='project-name']"));
+//        for (WebElement project : projects) {
+//            if (projectName.equals(project.getText())) {
+//                System.out.println(project);
+//                CommonActions.clickElement(project);
+//            }
+//        }
+////        driver.manage().timeouts().pageLoadTimeout(45, TimeUnit.SECONDS);
+////        return new StoryDashBoard();
+//        return new ProjectHome();
+//    }
 
     /**
      * This method make click in create workspace link.
