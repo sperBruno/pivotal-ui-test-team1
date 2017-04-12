@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 public final class DriverManager {
 
     private static final Environment ENVIRONMENT = Environment.getInstance();
+    public static final int WAIT_TIME_OUT = 30;
 
     private static DriverManager instance;
 
@@ -30,7 +31,7 @@ public final class DriverManager {
         driver = DriverFactory.getDriver(browser).initDriver();
         driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, 30);
+        wait = new WebDriverWait(driver, WAIT_TIME_OUT);
         driver.get(baseUrl);
     }
 

@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 /**
  * This class have the actions on the Story Board.
  */
@@ -18,30 +20,24 @@ public class StoryDashBoard extends AbstractBasePage {
     private static final String DELETE_BUTTON = "a[class=\"autosaves undraggable delete\"]";
     public static final String ALL_DELETE_BUTTONS = "//li[contains(@class,'task draggable droppable task')]";
 
-    private SideBarBoard sideBarBoard;
-
     @FindBy(css = ".raw_context_name.public")
     private WebElement nameOfProject;
-//
-//    @FindBy(name = "task[description]")
-//    private WebElement taskTextField;
-//
-//    @FindBy(css = "button.autosaves.std.add")
-//    private WebElement addButton;
-//
-//    @FindBy(css = "section[class=\"tasks full\"]")
-//    private WebElement taskList;
-//
-//    @FindBy(css = "a[class=\"autosaves undraggable edit\"]")
-//    private WebElement editButton;
-//
-//    @FindBy(css = " div[class=\"tasks_index\"]")
-//    private WebElement taskIndex;
 
+    @FindBy(name = "task[description]")
+    private WebElement taskTextField;
 
-    public StoryDashBoard() {
-//        sideBarBoard = new SideBarBoard();
-    }
+    @FindBy(css = "button.autosaves.std.add")
+    private WebElement addButton;
+
+    @FindBy(css = "section[class=\"tasks full\"]")
+    private WebElement taskList;
+
+    @FindBy(css = "a[class=\"autosaves undraggable edit\"]")
+    private WebElement editButton;
+
+    @FindBy(css = " div[class=\"tasks_index\"]")
+    private WebElement taskIndex;
+
 
     /**
      * Deploys the story board.
@@ -51,7 +47,7 @@ public class StoryDashBoard extends AbstractBasePage {
     public void clickForStoryDeploy(final String storyName) {
         CommonActions.clickElement(driver.findElement(
                 By.cssSelector("header[class=\"preview\"] >a[title=" + storyName + "] "
-                + "+ [class=\"expander undraggable")));
+                        + "+ [class=\"expander undraggable")));
     }
 
     /**
@@ -60,8 +56,8 @@ public class StoryDashBoard extends AbstractBasePage {
      * @param taskText String description of the task.
      */
     public void setTaskText(final String taskText) {
-//        CommonActions.sendKeys(taskTextField, taskText);
-//        CommonActions.clickElement(addButton);
+        CommonActions.sendKeys(taskTextField, taskText);
+        CommonActions.clickElement(addButton);
     }
 
     /**
@@ -70,10 +66,10 @@ public class StoryDashBoard extends AbstractBasePage {
      * @param taskText String of the task.
      * @return boolean  element exist
      */
-//    public boolean taskTextExist(final String taskText) {
-//        List<WebElement> taskCreated = taskList.findElements(By.cssSelector("div.description.tracker_markup"));
-//        return taskCreated.stream().anyMatch(x -> x.getText().equals(taskText));
-//    }
+    public boolean taskTextExist(final String taskText) {
+        List<WebElement> taskCreated = taskList.findElements(By.cssSelector("div.description.tracker_markup"));
+        return taskCreated.stream().anyMatch(x -> x.getText().equals(taskText));
+    }
 
     /**
      * this method  find the ald task and update whit the a new task.
@@ -82,11 +78,11 @@ public class StoryDashBoard extends AbstractBasePage {
      * @param textToUpdate String new task to update.
      */
     public void updateTheTasks(final String oldText, final String textToUpdate) {
-//        List<WebElement> tasksElements = taskIndex
-//                .findElements(By.xpath("//li[contains(@class,'task draggable droppable task')]"));
-//        tasksElements.stream()
-//                .filter(webElement -> oldText.equals(webElement.getText()))
-//                .forEach(webElement -> updateTheTask(webElement, textToUpdate));
+        List<WebElement> tasksElements = taskIndex
+                .findElements(By.xpath("//li[contains(@class,'task draggable droppable task')]"));
+        tasksElements.stream()
+                .filter(webElement -> oldText.equals(webElement.getText()))
+                .forEach(webElement -> updateTheTask(webElement, textToUpdate));
     }
 
     /**
@@ -111,10 +107,10 @@ public class StoryDashBoard extends AbstractBasePage {
      */
     public void deleteTask(final String taskCreated) {
         String task = Mapper.mapEndpoint(taskCreated);
-//        List<WebElement> tasksElements = taskIndex
-//                .findElements(By.xpath(ALL_DELETE_BUTTONS));
-//        tasksElements.stream().filter(webElement -> task.equals(webElement.getText()))
-//                .forEach(this::deleteTask);
+        List<WebElement> tasksElements = taskIndex
+                .findElements(By.xpath(ALL_DELETE_BUTTONS));
+        tasksElements.stream().filter(webElement -> task.equals(webElement.getText()))
+                .forEach(this::deleteTask);
     }
 
     /**
@@ -128,11 +124,4 @@ public class StoryDashBoard extends AbstractBasePage {
                 .findElement(By.cssSelector(DELETE_BUTTON)));
     }
 
-    /**
-     * This method will be used to get sideBarBoard.
-     * @return SideBarBoard
-     */
-    public SideBarBoard getSideBarBoard() {
-        return sideBarBoard;
-    }
 }

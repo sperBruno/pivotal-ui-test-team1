@@ -11,7 +11,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.*;
+import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.PROJECT_NAME;
+import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.ACCOUNT;
+import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.PROJECT_PRIVACY;
 
 /**
  * This class is Project form to PivotalTracker.
@@ -19,14 +21,19 @@ import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.*;
 public class ProjectForm extends AbstractBasePage {
     @FindBy(css = "input[class=\" tc-form__input\"]")
     private WebElement projectNameTextField;
+
     @FindBy(className = "tc-account-selector")
     private WebElement accountDropDownList;
+
     @FindBy(className = "tc-account-selector__option-account-name")
     private WebElement accountOptionDropDownList;
+
     @FindBy(css = ".tc-form-modal-footer__button.tc-form-modal-footer__button--submit")
     private WebElement createButton;
+
     @FindBy(css = "div[data-aid='create-account-button']")
     private WebElement createAccountButtonOptionDropDownList;
+
     @FindBy(css = "input.tc-account-creator__name")
     private WebElement newAccountProjectTextField;
 

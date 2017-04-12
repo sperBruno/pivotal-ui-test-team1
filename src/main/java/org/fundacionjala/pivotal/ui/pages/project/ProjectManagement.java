@@ -20,20 +20,14 @@ public class ProjectManagement extends AbstractBasePage {
     @FindBy(css = "a[data-aid='navTab-settings'] span")
     private WebElement navBarSettings;
 
-
-
     @FindBy(css = "a[data-aid='navTab-stories']")
     private WebElement staorytab;
 
-
-
-
-
     @FindBy(css = "project_name")
-    WebElement projectName;
+    private WebElement projectName;
 
     @FindBy(css = "save_bar__submit")
-    WebElement save;
+    private WebElement save;
 
     /**
      * this project obtain project name.
@@ -43,7 +37,6 @@ public class ProjectManagement extends AbstractBasePage {
     public String getProjectName() {
         return CommonActions.getText(projectNameSpan);
     }
-
 
 
     /**
@@ -64,14 +57,20 @@ public class ProjectManagement extends AbstractBasePage {
 
     /**
      * Thits method will select setting tab.
-     * @return
+     *
+     * @return SettingsProject.
      */
     public SettingsProject clickSettingsTab() {
         clickElement(navBarSettings);
         return new SettingsProject();
     }
 
-    public Story clickAddStory() {
+    /**
+     * This method will select Story navtab.
+     *
+     * @return Story.
+     */
+    public Story clickStoryTab() {
 
         clickElement(staorytab);
         return new Story();
@@ -79,13 +78,19 @@ public class ProjectManagement extends AbstractBasePage {
     }
 
 
-
-
-    public void ediProjectNAme(String name) {
+    /**
+     * This method will update the projectTitle.
+     *
+     * @param name to change.
+     */
+    public void ediProjectNAme(final String name) {
         CommonActions.clickElement(projectName);
-        CommonActions.sendKeys(projectName,name);
+        CommonActions.sendKeys(projectName, name);
     }
 
+    /**
+     * This method click save edit project.
+     */
     public void saveEditProject() {
         CommonActions.clickElement(save);
     }

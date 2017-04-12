@@ -1,5 +1,6 @@
 package org.fundacionjala.pivotal.ui.pages;
 
+import org.fundacionjala.pivotal.ui.browser.DriverManager;
 import org.fundacionjala.pivotal.ui.pages.common.CommonActions;
 import org.fundacionjala.pivotal.ui.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.ui.pages.workspace.CreateWorkspace;
@@ -50,19 +51,17 @@ public class Dashboard extends AbstractBasePage {
      * @param projectName String Project name.
      * @return StoryDashboard object.
      */
-////    public StoryDashBoard projectsList(final String projectName) {
-//    public ProjectHome projectsList(final String projectName) {
-//        List<WebElement> projects = DriverManager.getInstance().getDriver().findElements(By.cssSelector("a[data-aid='project-name']"));
-//        for (WebElement project : projects) {
-//            if (projectName.equals(project.getText())) {
-//                System.out.println(project);
-//                CommonActions.clickElement(project);
-//            }
-//        }
-////        driver.manage().timeouts().pageLoadTimeout(45, TimeUnit.SECONDS);
-////        return new StoryDashBoard();
-//        return new ProjectHome();
-//    }
+    public StoryDashBoard projectsList(final String projectName) {
+        final By selector = By.cssSelector("a[data-aid='project-name']");
+        List<WebElement> projects = DriverManager.getInstance().getDriver().findElements(selector);
+        for (WebElement project : projects) {
+            if (projectName.equals(project.getText())) {
+                System.out.println(project);
+                CommonActions.clickElement(project);
+            }
+        }
+        return new StoryDashBoard();
+    }
 
     /**
      * This method make click in create workspace link.
