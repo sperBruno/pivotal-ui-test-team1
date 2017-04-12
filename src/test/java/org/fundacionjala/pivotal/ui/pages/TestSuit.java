@@ -1,4 +1,4 @@
-package org.fundacionjala.pivotal.ui;
+package org.fundacionjala.pivotal.ui.pages;
 
 import org.testng.ITestContext;
 import org.testng.ITestListener;
