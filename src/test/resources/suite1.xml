@@ -5,6 +5,7 @@
 
     <test name="Regression1">
         <classes>
+            <class name="org.fundacionjala.pivotal.ui.pages.project.ProjectManagementTest"/>
             <class name="org.fundacionjala.pivotal.ui.pages.StoryDashBoardTest"/>
         </classes>
     </test>

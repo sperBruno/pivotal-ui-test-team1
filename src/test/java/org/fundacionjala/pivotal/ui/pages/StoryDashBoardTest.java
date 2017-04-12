@@ -1,10 +1,22 @@
 package org.fundacionjala.pivotal.ui.pages;
 
+import org.fundacionjala.pivotal.api.apiUtils;
+import org.fundacionjala.pivotal.ui.pages.common.CommonMethods;
+import org.fundacionjala.pivotal.ui.pages.project.ProjectForm;
+import org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting;
+import org.fundacionjala.pivotal.ui.pages.project.ProjectManagement;
+import org.fundacionjala.pivotal.ui.pages.project.Story;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
+
+import static org.fundacionjala.pivotal.ui.pages.common.CommonNavigator.goToDashboard;
+import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.*;
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Created by bruno on 4/9/2017.
@@ -12,7 +24,7 @@ import java.util.logging.Logger;
 public class StoryDashBoardTest {
             private static final Logger LOGGER = Logger.getLogger(StoryDashBoard.class.getName());
             private Dashboard dashboard;
-            private StoryDashBoard storyDashBoard;
+//            private ProjectHome projectHome;
 
             /**
              * This before will be executed before a suite.
@@ -29,9 +41,29 @@ public class StoryDashBoardTest {
             @Test
             public void createStory() {
                 final String projectNameLink = "template";
-                dashboard = new Dashboard();
-                storyDashBoard = dashboard.projectsList(projectNameLink);
-                IceBox iceBox = storyDashBoard.getSideBarBoard().clickAddStory();
+                ProjectForm projectForm =dashboard.clickCreateProjectButton();
+
+                Map<ProjectFormSetting, String> newPro = new HashMap<>();
+                final String testeandOsd = "TESTEANDOsd";
+                newPro.put(PROJECT_NAME, testeandOsd);
+                final String cocobongo = "COCOBONGO";
+                newPro.put(ACCOUNT, cocobongo);
+                final String publicProject = "Public";
+                newPro.put(PROJECT_PRIVACY, publicProject);
+
+                projectForm.setConfiguration(newPro);
+                ProjectManagement projectManagement = projectForm.clickCreateProjectButton();
+                String projectID =  apiUtils.getProjectID(testeandOsd);
+                LOGGER.info(" " + projectID);
+                assertEquals(testeandOsd, projectManagement.getProjectName());
+                Story story= new Story();
+                story.clickAddStoryButton();
+                final String storyTitle = "storytest";
+                story.setStoryTitle(storyTitle);
+                story.clickSaveStory();
+
+
+
             }
 
             /**
@@ -39,6 +71,8 @@ public class StoryDashBoardTest {
              */
             @AfterSuite
             public void logoutPivotal() {
+                CommonMethods.deleteAllProjects();
+                goToDashboard();
             }
         }
 
