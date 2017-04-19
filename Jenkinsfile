@@ -6,5 +6,10 @@ pipeline {
         git(url: 'https://github.com/SeleniumCourse/pivotal-ui-test-team1.git', branch: 'develop')
       }
     }
+    stage('Browser Tests') {
+      steps {
+        sh 'gradle check'
+      }
+    }
   }
 }
