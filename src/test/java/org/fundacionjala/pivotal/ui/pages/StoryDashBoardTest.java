@@ -6,6 +6,7 @@ import org.fundacionjala.pivotal.ui.pages.project.ProjectForm;
 import org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting;
 import org.fundacionjala.pivotal.ui.pages.project.ProjectManagement;
 import org.fundacionjala.pivotal.ui.pages.project.Story;
+import org.fundacionjala.pivotal.utils.Environment;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -14,7 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.*;
+import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.PROJECT_NAME;
+import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.ACCOUNT;
+import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.PROJECT_PRIVACY;
 import static org.testng.AssertJUnit.assertEquals;
 
 /**
@@ -44,7 +47,7 @@ public class StoryDashBoardTest {
         Map<ProjectFormSetting, String> newPro = new HashMap<>();
         final String testeandOsd = "TESTEANDOsd";
         newPro.put(PROJECT_NAME, testeandOsd);
-        final String cocobongo = "COCOBONGO";
+        final String cocobongo = Environment.getInstance().getPrimaryUser();
         newPro.put(ACCOUNT, cocobongo);
         final String publicProject = "Public";
         newPro.put(PROJECT_PRIVACY, publicProject);
