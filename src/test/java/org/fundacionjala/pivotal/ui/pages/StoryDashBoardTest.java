@@ -14,10 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import static org.fundacionjala.pivotal.ui.pages.common.CommonNavigator.goToDashboard;
-import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.PROJECT_NAME;
-import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.ACCOUNT;
-import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.PROJECT_PRIVACY;
+import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.*;
 import static org.testng.AssertJUnit.assertEquals;
 
 /**
@@ -72,6 +69,5 @@ public class StoryDashBoardTest {
     @AfterSuite
     public void logoutPivotal() {
         CommonMethods.deleteAllProjects();
-        goToDashboard();
     }
 }
