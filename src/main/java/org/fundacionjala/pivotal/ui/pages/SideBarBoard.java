@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by bruno on 4/9/2017.
  */
-public class SideBarBoard extends AbstractBasePage{
+public class SideBarBoard extends AbstractBasePage {
 
 
     @FindBy(css = ".button.add_story > span")
