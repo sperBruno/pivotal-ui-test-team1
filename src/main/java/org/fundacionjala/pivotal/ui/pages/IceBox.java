@@ -1,7 +1,7 @@
 package org.fundacionjala.pivotal.ui.pages;
 
 /**
- * ICEBOX class
+ * ICEBOX class.
  */
 public class IceBox {
 }
