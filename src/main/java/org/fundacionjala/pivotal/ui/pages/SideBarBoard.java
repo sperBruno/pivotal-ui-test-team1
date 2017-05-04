@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by bruno on 4/9/2017.
+ * SideBarBoard class.
  */
 public class SideBarBoard extends AbstractBasePage {
 

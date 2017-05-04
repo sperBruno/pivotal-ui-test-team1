@@ -3,11 +3,12 @@ package org.fundacionjala.pivotal.ui.pages;
 import org.fundacionjala.pivotal.ui.pages.account.Account;
 import org.fundacionjala.pivotal.ui.pages.account.ManageAccount;
 import org.fundacionjala.pivotal.ui.pages.menu.TopMenu;
-import org.junit.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 import static org.fundacionjala.pivotal.ui.pages.common.CommonNavigator.goToDashboard;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Created by Bruno Barrios on 4/12/2017.
@@ -16,13 +17,6 @@ public class AccountTest {
 
     private Account account;
 
-//    /**
-//     * This before will be executed before a suite.
-//     */
-//    @BeforeSuite
-//    public void beforeSuite() {
-//         SignInForm.loginAsPrimaryUser();
-//    }
 
     /**
      * This test will create account name.
@@ -36,12 +30,12 @@ public class AccountTest {
         ManageAccount manageAccount = account.createAccount(accountName);
         manageAccount.waitPage();
 
-        Assert.assertEquals(accountName, manageAccount.getAccountName());
+        assertEquals(accountName, manageAccount.getAccountName());
 
         topMenu.clickUserNameDropDown();
         topMenu.clickAccountDropDownItem();
 
-        Assert.assertTrue(account.isAccountDisplayed(accountName));
+        assertTrue(account.isAccountDisplayed(accountName));
 
     }
 
