@@ -71,7 +71,6 @@ public class Dashboard extends AbstractBasePage {
         List<WebElement> projects = DriverManager.getInstance().getDriver().findElements(selector);
         for (WebElement project : projects) {
             if (projectName.equals(project.getText())) {
-                System.out.println(project);
                 CommonActions.clickElement(project);
             }
         }

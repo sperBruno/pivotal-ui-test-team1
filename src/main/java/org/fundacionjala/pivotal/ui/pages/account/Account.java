@@ -1,16 +1,15 @@
 package org.fundacionjala.pivotal.ui.pages.account;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-
 import org.fundacionjala.pivotal.ui.browser.DriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
 import org.fundacionjala.pivotal.ui.pages.AbstractBasePage;
 import org.fundacionjala.pivotal.ui.pages.common.CommonActions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
 
 /**
  * This is the Account page class.
