@@ -16,7 +16,7 @@ import java.util.List;
  * Dashboard page the PivotalTracker.
  */
 public class Dashboard extends AbstractBasePage {
-    @FindBy(css = ".button.button--action")
+    @FindBy(id = "create-project-button")
     private WebElement createProjectButton;
 
     @FindBy(xpath = "//span[text()='Workspaces']")

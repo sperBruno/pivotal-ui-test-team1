@@ -19,7 +19,9 @@ import static org.fundacionjala.pivotal.ui.pages.project.ProjectFormSetting.PROJ
  * This class is Project form to PivotalTracker.
  */
 public class ProjectForm extends AbstractBasePage {
-    @FindBy(css = "input[class=\" tc-form__input\"]")
+
+//    @FindBy(css = ".wizard__input")
+    @FindBy(css = ".tc-form__input")
     private WebElement projectNameTextField;
 
     @FindBy(className = "tc-account-selector")
@@ -28,7 +30,8 @@ public class ProjectForm extends AbstractBasePage {
     @FindBy(className = "tc-account-selector__option-account-name")
     private WebElement accountOptionDropDownList;
 
-    @FindBy(css = ".tc-form-modal-footer__button.tc-form-modal-footer__button--submit")
+//    @FindBy(css = ".tc-form-modal-footer__button.tc-form-modal-footer__button--submit")
+    @FindBy(css = ".zWDds__Button.pvXpn__Button--positive")
     private WebElement createButton;
 
     @FindBy(css = "div[data-aid='create-account-button']")

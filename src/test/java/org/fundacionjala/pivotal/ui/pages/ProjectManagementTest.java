@@ -30,7 +30,7 @@ public class ProjectManagementTest {
      */
     @Test
     public void createProject() {
-        Dashboard dashboard = new Dashboard();
+        Dashboard dashboard = SignInForm.loginAsPrimaryUser();
         ProjectForm projectForm = dashboard.clickCreateProjectButton();
 
         Map<ProjectFormSetting, String> newPro = new HashMap<>();
@@ -50,7 +50,7 @@ public class ProjectManagementTest {
      */
     @AfterClass
     public void teardown() {
-        CommonMethods.deleteAllProjects();
+//        CommonMethods.deleteAllProjects();
         goToDashboard();
     }
 }
